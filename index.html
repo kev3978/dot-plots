@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Fed Interest Rate Plot with Predictions and Tooltips</title>
-    <!-- Updated D3.js to version 6 -->
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
         /* Center the chart title */
@@ -30,6 +29,13 @@
         .prediction-dot {
             fill: red;
             opacity: 0.7;
+        }
+
+        /* Dot on main line */
+        .origin-dot {
+            fill: black;
+            stroke: white;
+            stroke-width: 1;
         }
 
         /* Mean line */
@@ -135,15 +141,17 @@
 
             // Set up the scales
             const x = d3.scaleTime()
-                .domain([d3.extent(rateData, d => d.date)[0], parseDate("2028-01")])
+                .domain([d3.extent(rateData, d => d.date)[0], parseDate("2027-01")])
                 .range([0, width]);
 
             const y = d3.scaleLinear()
                 .domain([0, 6])
                 .range([height, 0]);
 
+            // Append the chart title
             d3.select("#chart").append("h2").text("Fed Rate and Members' Predictions");
 
+            // Append the SVG object to the #chart div
             const svg = d3.select("#chart")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
@@ -151,6 +159,7 @@
                 .append("g")
                 .attr("transform", `translate(${margin.left},${margin.top})`);
 
+            // Define the tooltip divs
             const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
             const tooltipMean = d3.select("body").append("div").attr("class", "tooltipMean").style("opacity", 0);
             const tooltipPrediction = d3.select("body").append("div").attr("class", "tooltipPrediction").style("opacity", 0);
@@ -215,15 +224,18 @@
                     tooltip.transition().duration(500).style("opacity", 0);
                 });
 
+            // Variable to hold the origin dot
+            let originDot;
+
             // Helper function to get the quarter from the month
             function getQuarter(month) {
                 return Math.ceil(month / 3);
             }
 
             // Function to add prediction points and related elements
-            function addPredictionPoints(predictions, year, quarter) {
+            function addPredictionPoints(predictions, year, quarter, dateClicked) {
                 // Remove existing prediction elements
-                svg.selectAll(".prediction-dot, .mean-line, .upper-line, .lower-line, .shaded-area").remove();
+                svg.selectAll(".prediction-dot, .mean-line, .upper-line, .lower-line, .shaded-area, .origin-dot").remove();
 
                 // Group the data by yearEnding using d3.group
                 const nestedData = d3.group(predictions, d => d.yearEnding);
@@ -328,6 +340,7 @@
                         tooltipMean.transition().duration(500).style("opacity", 0);
                     });
 
+                // Add prediction dots
                 svg.selectAll(".prediction-dot")
                     .data(predictions)
                     .enter().append("circle")
@@ -346,6 +359,31 @@
                     .on("mouseout", function() {
                         tooltipPrediction.transition().duration(500).style("opacity", 0);
                     });
+
+                // **Add the Origin Dot after all other elements**
+
+                // Find the rate data point closest to dateClicked
+                const rateAtDate = rateData.reduce((a, b) =>
+                    Math.abs(b.date - dateClicked) < Math.abs(a.date - dateClicked) ? b : a
+                );
+
+                if (rateAtDate) {
+                    originDot = svg.append("circle")
+                        .attr("class", "origin-dot")
+                        .attr("r", 6)
+                        .attr("cx", x(rateAtDate.date))
+                        .attr("cy", y(rateAtDate.rate))
+                        .on("mouseover", function(event) {
+                            tooltip.transition().duration(200).style("opacity", .9);
+                            tooltip.html(`<strong>Origin Date:</strong> ${rateAtDate.month}/${rateAtDate.year}<br><strong>Rate:</strong> ${rateAtDate.rate}`)
+                                .style("left", `${event.pageX + 10}px`)
+                                .style("top", `${event.pageY - 25}px`);
+                        })
+                        .on("mouseout", function() {
+                            tooltip.transition().duration(500).style("opacity", 0);
+                        });
+                }
+
 
                 const years = Array.from(new Set(predictions.map(d => d.yearEnding))).sort();
 
@@ -404,12 +442,13 @@
 
                 tableHTML += '</tbody></table>';
 
+                // Update the #info-box with the table
                 d3.select("#info-box").style("display", "block").html(tableHTML);
             }
 
             function resetGraph() {
                 linePath.style("opacity", 1);
-                svg.selectAll(".prediction-dot, .mean-line, .upper-line, .lower-line, .shaded-area").remove();
+                svg.selectAll(".prediction-dot, .mean-line, .upper-line, .lower-line, .shaded-area, .origin-dot").remove();
                 d3.select("#info-box").style("display", "none");
             }
 
@@ -423,9 +462,14 @@
 
                 linePath.style("opacity", 0.5);
 
-                const predictions = (predictionData.find(d => d.year === year && d.quarter === quarter) || {}).predictions;
-                if (predictions) {
-                    addPredictionPoints(predictions, year, quarter);
+                const predictionsData = predictionData.find(d => d.year === year && d.quarter === quarter);
+                if (predictionsData && predictionsData.predictions) {
+                    const predictions = predictionsData.predictions;
+                    addPredictionPoints(predictions, year, quarter, dateClicked);
+                } else {
+                    // If no predictions are found, reset the graph and show a message
+                    resetGraph();
+                    alert(`No predictions available for ${year} Q${quarter}`);
                 }
             }
         });
