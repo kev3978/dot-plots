@@ -344,6 +344,36 @@
         "yearEnding": 2015,
         "value": 4.5,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2016,
+        "value": 3.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2016,
+        "value": 3.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2016,
+        "value": 3.75,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2016,
+        "value": 4.0,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2016,
+        "value": 4.25,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2016,
+        "value": 4.5,
+        "quantity": 4
       }
     ]
   },
@@ -445,6 +475,36 @@
         "yearEnding": 2015,
         "value": 4.5,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2016,
+        "value": 3.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2016,
+        "value": 3.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2016,
+        "value": 3.75,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2016,
+        "value": 4.0,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2016,
+        "value": 4.25,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2016,
+        "value": 4.5,
+        "quantity": 3
       }
     ]
   },
@@ -773,6 +833,31 @@
         "yearEnding": 2016,
         "value": 4.25,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2017,
+        "value": 3.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2017,
+        "value": 3.5,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2017,
+        "value": 3.75,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2017,
+        "value": 4.0,
+        "quantity": 10
+      },
+      {
+        "yearEnding": 2017,
+        "value": 4.25,
+        "quantity": 3
       }
     ]
   },
@@ -904,6 +989,26 @@
         "yearEnding": 2016,
         "value": 4.25,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2017,
+        "value": 3.5,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2017,
+        "value": 3.75,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2017,
+        "value": 4.0,
+        "quantity": 9
+      },
+      {
+        "yearEnding": 2017,
+        "value": 4.25,
+        "quantity": 2
       }
     ]
   },
@@ -1362,6 +1467,36 @@
         "yearEnding": 2017,
         "value": 4.375,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2018,
+        "value": 3.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2018,
+        "value": 3.5,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2018,
+        "value": 3.75,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2018,
+        "value": 3.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2018,
+        "value": 4.0,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2018,
+        "value": 4.25,
+        "quantity": 2
       }
     ]
   },
@@ -1521,6 +1656,31 @@
       },
       {
         "yearEnding": 2017,
+        "value": 4.25,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2018,
+        "value": 3.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2018,
+        "value": 3.5,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2018,
+        "value": 3.75,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2018,
+        "value": 4.0,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2018,
         "value": 4.25,
         "quantity": 2
       }
@@ -2006,6 +2166,36 @@
         "yearEnding": 2018,
         "value": 3.875,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.25,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.5,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.75,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2019,
+        "value": 4.0,
+        "quantity": 1
       }
     ]
   },
@@ -2131,6 +2321,31 @@
       {
         "yearEnding": 2018,
         "value": 3.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.0,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.25,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.5,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2019,
+        "value": 3.75,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2019,
+        "value": 4.0,
         "quantity": 1
       }
     ]
@@ -2540,6 +2755,31 @@
         "yearEnding": 2019,
         "value": 3.75,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2020,
+        "value": 2.5,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2020,
+        "value": 2.75,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2020,
+        "value": 3.0,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2020,
+        "value": 3.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2020,
+        "value": 3.75,
+        "quantity": 1
       }
     ]
   },
@@ -2675,6 +2915,31 @@
       {
         "yearEnding": 2019,
         "value": 3.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2020,
+        "value": 2.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2020,
+        "value": 2.75,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2020,
+        "value": 3.0,
+        "quantity": 7
+      },
+      {
+        "yearEnding": 2020,
+        "value": 3.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2020,
+        "value": 3.75,
         "quantity": 1
       }
     ]
@@ -3114,6 +3379,31 @@
         "yearEnding": 2020,
         "value": 3.875,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2021,
+        "value": 2.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2021,
+        "value": 2.5,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2021,
+        "value": 2.75,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2021,
+        "value": 3.0,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2021,
+        "value": 3.5,
+        "quantity": 1
       }
     ]
   },
@@ -3250,6 +3540,26 @@
         "yearEnding": 2020,
         "value": 4.125,
         "quantity": 2
+      },
+      {
+        "yearEnding": 2021,
+        "value": 2.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2021,
+        "value": 2.5,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2021,
+        "value": 2.75,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2021,
+        "value": 3.0,
+        "quantity": 6
       }
     ]
   },
@@ -3668,6 +3978,31 @@
         "yearEnding": 2021,
         "value": 4.125,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2022,
+        "value": 2.5,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2022,
+        "value": 2.75,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2022,
+        "value": 3.0,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2022,
+        "value": 3.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2022,
+        "value": 3.5,
+        "quantity": 1
       }
     ]
   },
@@ -3764,6 +4099,31 @@
         "yearEnding": 2021,
         "value": 3.625,
         "quantity": 2
+      },
+      {
+        "yearEnding": 2022,
+        "value": 2.5,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2022,
+        "value": 2.75,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2022,
+        "value": 3.0,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2022,
+        "value": 3.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2022,
+        "value": 3.5,
+        "quantity": 1
       }
     ]
   },
@@ -4067,6 +4427,41 @@
         "yearEnding": 2022,
         "value": 2.875,
         "quantity": 2
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.5,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.75,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2023,
+        "value": 3.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2023,
+        "value": 3.25,
+        "quantity": 1
       }
     ]
   },
@@ -4138,6 +4533,41 @@
         "yearEnding": 2022,
         "value": 2.875,
         "quantity": 2
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.25,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.5,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2023,
+        "value": 2.75,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2023,
+        "value": 3.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2023,
+        "value": 3.25,
+        "quantity": 1
       }
     ]
   },
@@ -4245,6 +4675,36 @@
         "yearEnding": 2023,
         "value": 1.375,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.25,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.5,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.75,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 3.0,
+        "quantity": 2
       }
     ]
   },
@@ -4291,6 +4751,36 @@
         "yearEnding": 2023,
         "value": 1.125,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.25,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.5,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2024,
+        "value": 2.75,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 3.0,
+        "quantity": 2
       }
     ]
   },
@@ -4554,6 +5044,31 @@
         "yearEnding": 2024,
         "value": 2.625,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.25,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.5,
+        "quantity": 9
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.0,
+        "quantity": 2
       }
     ]
   },
@@ -4640,6 +5155,31 @@
         "yearEnding": 2024,
         "value": 3.125,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.25,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.5,
+        "quantity": 9
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.0,
+        "quantity": 2
       }
     ]
   },
@@ -5028,6 +5568,31 @@
         "yearEnding": 2025,
         "value": 4.625,
         "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.25,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.5,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.0,
+        "quantity": 2
       }
     ]
   },
@@ -5148,6 +5713,36 @@
       {
         "yearEnding": 2025,
         "value": 5.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.25,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.5,
+        "quantity": 9
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.25,
         "quantity": 1
       }
     ]
@@ -5470,6 +6065,836 @@
       {
         "yearEnding": 2026,
         "value": 3.625,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "quarter": 3,
+    "predictions": [
+      {
+        "yearEnding": 2023,
+        "value": 5.375,
+        "quantity": 7
+      },
+      {
+        "yearEnding": 2023,
+        "value": 5.625,
+        "quantity": 12
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.875,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.125,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.375,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 6.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.375,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.125,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 5.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 5.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 5.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.375,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.625,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.75,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.0,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.125,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 4.125,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2026,
+        "value": 4.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 4.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.375,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.5,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.625,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.75,
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "quarter": 4,
+    "predictions": [
+      {
+        "yearEnding": 2023,
+        "value": 5.375,
+        "quantity": 19
+      },
+      {
+        "yearEnding": 2024,
+        "value": 3.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.375,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.625,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.875,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.125,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.375,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.875,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 5.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.375,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.625,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.875,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.125,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.375,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.5,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.75,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.5,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.75,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "quarter": 1,
+    "predictions": [
+      {
+        "yearEnding": 2024,
+        "value": 3.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.625,
+        "quantity": 9
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.875,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.125,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.875,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.125,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.625,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.875,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 5.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.5,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.125,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 4.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.5,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.75,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.0,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.5,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.75,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "quarter": 2,
+    "predictions": [
+      {
+        "yearEnding": 2024,
+        "value": 4.875,
+        "quantity": 8
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.125,
+        "quantity": 7
+      },
+      {
+        "yearEnding": 2024,
+        "value": 5.375,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.125,
+        "quantity": 9
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.375,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 5.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.125,
+        "quantity": 7
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.375,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2026,
+        "value": 4.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 4.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.5,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.75,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.0,
+        "quantity": 4
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.5,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.75,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "quarter": 3,
+    "predictions": [
+      {
+        "yearEnding": 2024,
+        "value": 4.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.375,
+        "quantity": 9
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.625,
+        "quantity": 7
+      },
+      {
+        "yearEnding": 2024,
+        "value": 4.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 2.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.125,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.375,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2025,
+        "value": 3.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2025,
+        "value": 4.125,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2026,
+        "value": 2.875,
+        "quantity": 6
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.125,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.375,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2026,
+        "value": 3.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2027,
+        "value": 2.875,
+        "quantity": 5
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.125,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.375,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.625,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2027,
+        "value": 3.875,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2028,
+        "value": 2.375,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2028,
+        "value": 2.5,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2028,
+        "value": 2.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2028,
+        "value": 2.75,
+        "quantity": 3
+      },
+      {
+        "yearEnding": 2028,
+        "value": 2.875,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2028,
+        "value": 3.25,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2028,
+        "value": 3.375,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2028,
+        "value": 3.5,
+        "quantity": 2
+      },
+      {
+        "yearEnding": 2028,
+        "value": 3.625,
+        "quantity": 1
+      },
+      {
+        "yearEnding": 2028,
+        "value": 3.75,
         "quantity": 1
       }
     ]
