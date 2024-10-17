@@ -117,9 +117,9 @@
 
 <script>
     // Load the interest rate data
-    d3.json('interest_rate_data.json').then(function(rateData) {
+    d3.json('data/interest_rate_data.json').then(function(rateData) {
         // Load the prediction data
-        d3.json('prediction_data.json').then(function(predictionData) {
+        d3.json('data/prediction_data.json').then(function(predictionData) {
 
             // Parse date and rate from the data
             const parseDate = d3.timeParse("%Y-%m");
