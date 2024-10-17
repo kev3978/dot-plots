@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fed Interest Rate Plot with Predictions and Tooltips</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        .tooltip, .tooltipMean, .tooltipPrediction, .tooltipUpper, .tooltipLower {
+            position: absolute;
+            background-color: white;
+            padding: 5px;
+            border: 1px solid black;
+            border-radius: 3px;
+            pointer-events: none;
+        }
+        .prediction-dot {
+            fill: red;
+            opacity: 0.7;
+        }
+        .mean-line {
+            stroke: green;
+            stroke-width: 2;
+            fill: none;
+        }
+        .upper-line {
+            stroke: blue;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 4;
+        }
+        .lower-line {
+            stroke: orange;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 4;
+        }
+        .shaded-area {
+            fill: lightblue;
+            opacity: 0.3;
+            pointer-events: none; /* Prevent the shaded area from capturing mouse events */
+        }
+    </style>
+</head>
+<body>
+<div id="chart"></div>
+<div id="info-box" class="info-box" style="display: none;"></div>
+
+<script>
+    d3.json('data/interest_rate_data.json').then(function(rateData) {
+        d3.json('data/prediction_data.json').then(function(predictionData) {
+
+            // Parse date and rate from the data
+            const parseDate = d3.timeParse("%Y-%m");
+            rateData.forEach(d => {
+                d.date = parseDate(d.year + '-' + d.month);
+                d.rate = +d.midpoint;
+            });
+
+            // Set up the dimensions and margins of the graph
+            const margin = {top: 20, right: 30, bottom: 50, left: 60},
+                width = 1600 - margin.left - margin.right,
+                height = 800 - margin.top - margin.bottom;
+
+            // Set up the scales
+            const x = d3.scaleTime()
+                .domain([d3.extent(rateData, d => d.date)[0], parseDate("2027-01")])
+                .range([0, width]);
+
+            const y = d3.scaleLinear()
+                .domain([0, 6])
+                .range([height, 0]);
+
+            // Append the chart title
+            d3.select("#chart").append("h2").text("Fed rate and its members' predictions");
+
+            // Append the SVG object to the #chart div
+            const svg = d3.select("#chart")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            // Define the tooltip divs
+            const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
+            const tooltipMean = d3.select("body").append("div").attr("class", "tooltipMean").style("opacity", 0);
+            const tooltipPrediction = d3.select("body").append("div").attr("class", "tooltipPrediction").style("opacity", 0);
+            const tooltipUpper = d3.select("body").append("div").attr("class", "tooltipUpper").style("opacity", 0);
+            const tooltipLower = d3.select("body").append("div").attr("class", "tooltipLower").style("opacity", 0);
+
+            // Add a rectangle for capturing click events
+            svg.append("rect")
+                .attr("width", width)
+                .attr("height", height)
+                .style("fill", "none")
+                .style("pointer-events", "all")
+                .on("click", resetGraph);
+
+            svg.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x).ticks(d3.timeYear.every(1)))
+                .selectAll("text")
+                .attr("transform", "rotate(45)")
+                .style("text-anchor", "start");
+
+            svg.append("g").call(d3.axisLeft(y));
+
+            const line = d3.line()
+                .x(d => x(d.date))
+                .y(d => y(d.rate))
+                .curve(d3.curveMonotoneX);
+
+            const linePath = svg.append("path")
+                .datum(rateData)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-width", 2)
+                .attr("d", line);
+
+            // Add an invisible path for capturing click events and tooltip events
+            svg.append("path")
+                .datum(rateData)
+                .attr("fill", "none")
+                .attr("stroke", "transparent")
+                .attr("stroke-width", 20)
+                .attr("d", line)
+                .style("pointer-events", "stroke")
+                .on("click", handleLineClick)
+                .on("mousemove", function(event) {
+                    const [mouseX] = d3.pointer(event);
+                    const dateHovered = x.invert(mouseX);
+                    const closestData = rateData.reduce((a, b) =>
+                        Math.abs(b.date - dateHovered) < Math.abs(a.date - dateHovered) ? b : a
+                    );
+
+                    tooltip.transition().duration(200).style("opacity", .9);
+                    tooltip.html(`Rate: ${closestData.rate}<br>Month: ${closestData.month}/${closestData.year}`)
+                        .style("left", `${event.pageX + 5}px`)
+                        .style("top", `${event.pageY - 28}px`);
+                })
+                .on("mouseout", function() {
+                    tooltip.transition().duration(500).style("opacity", 0);
+                });
+
+            function getQuarter(month) {
+                return Math.ceil(month / 3);
+            }
+
+            function addPredictionPoints(predictions, year, quarter) {
+                // Remove existing prediction elements
+                svg.selectAll(".prediction-dot, .mean-line, .upper-line, .lower-line, .shaded-area").remove();
+
+                // Group the data by yearEnding using d3.group
+                const nestedData = d3.group(predictions, d => d.yearEnding);
+
+                // Calculate the weighted mean points
+                const meanPoints = Array.from(nestedData, ([yearEnding, values]) => {
+                    const weightedMean = d3.sum(values, d => d.value * d.quantity) / d3.sum(values, d => d.quantity);
+                    return { date: parseDate(`${yearEnding}-12`), value: weightedMean };
+                });
+
+                // Calculate upper and lower points for the shaded area
+                const upperPoints = Array.from(nestedData, ([yearEnding, values]) => {
+                    const maxValue = d3.max(values, d => d.value);
+                    return { date: parseDate(`${yearEnding}-12`), value: maxValue };
+                });
+
+                const lowerPoints = Array.from(nestedData, ([yearEnding, values]) => {
+                    const minValue = d3.min(values, d => d.value);
+                    return { date: parseDate(`${yearEnding}-12`), value: minValue };
+                });
+
+                // Define the area between upper and lower predictions
+                const area = d3.area()
+                    .x(d => x(d.date))
+                    .y0(d => y(d.lower))
+                    .y1(d => y(d.upper))
+                    .curve(d3.curveMonotoneX);
+
+                const shadedData = upperPoints.map((d, i) => {
+                    return { date: d.date, upper: d.value, lower: lowerPoints[i].value };
+                });
+
+                svg.append("path")
+                    .datum(shadedData)
+                    .attr("class", "shaded-area")
+                    .attr("d", area);
+
+                const upperLine = d3.line()
+                    .x(d => x(d.date))
+                    .y(d => y(d.value))
+                    .curve(d3.curveMonotoneX);
+
+                const lowerLine = d3.line()
+                    .x(d => x(d.date))
+                    .y(d => y(d.value))
+                    .curve(d3.curveMonotoneX);
+
+                svg.append("path")
+                    .datum(upperPoints)
+                    .attr("class", "upper-line")
+                    .attr("d", upperLine)
+                    .on("mouseover", function(event) {
+                        tooltipUpper.transition().duration(200).style("opacity", .9);
+                        tooltipUpper.html("Upper predictions");
+                    })
+                    .on("mousemove", function(event) {
+                        tooltipUpper.style("left", `${event.pageX + 5}px`)
+                            .style("top", `${event.pageY - 28}px`);
+                    })
+                    .on("mouseout", function() {
+                        tooltipUpper.transition().duration(500).style("opacity", 0);
+                    });
+
+                svg.append("path")
+                    .datum(lowerPoints)
+                    .attr("class", "lower-line")
+                    .attr("d", lowerLine)
+                    .on("mouseover", function(event) {
+                        tooltipLower.transition().duration(200).style("opacity", .9);
+                        tooltipLower.html("Lower predictions");
+                    })
+                    .on("mousemove", function(event) {
+                        tooltipLower.style("left", `${event.pageX + 5}px`)
+                            .style("top", `${event.pageY - 28}px`);
+                    })
+                    .on("mouseout", function() {
+                        tooltipLower.transition().duration(500).style("opacity", 0);
+                    });
+
+                const meanLine = d3.line()
+                    .x(d => x(d.date))
+                    .y(d => y(d.value))
+                    .curve(d3.curveMonotoneX);
+
+                svg.append("path")
+                    .datum(meanPoints)
+                    .attr("class", "mean-line")
+                    .attr("d", meanLine)
+                    .on("mouseover", function(event) {
+                        tooltipMean.transition().duration(200).style("opacity", .9);
+                        tooltipMean.html("Mean forecast");
+                    })
+                    .on("mousemove", function(event) {
+                        tooltipMean.style("left", `${event.pageX + 5}px`)
+                            .style("top", `${event.pageY - 28}px`);
+                    })
+                    .on("mouseout", function() {
+                        tooltipMean.transition().duration(500).style("opacity", 0);
+                    });
+
+                svg.selectAll(".prediction-dot")
+                    .data(predictions)
+                    .enter().append("circle")
+                    .attr("class", "prediction-dot")
+                    .attr("r", d => Math.sqrt(d.quantity) * 2)
+                    .attr("cx", d => x(parseDate(`${d.yearEnding}-12`)))
+                    .attr("cy", d => y(d.value))
+                    .on("mouseover", function(event, d) {
+                        tooltipPrediction.transition().duration(200).style("opacity", .9);
+                        tooltipPrediction.html(`Quantity: ${d.quantity}<br>Rate: ${d.value}`);
+                    })
+                    .on("mousemove", function(event) {
+                        tooltipPrediction.style("left", `${event.pageX + 5}px`)
+                            .style("top", `${event.pageY - 28}px`);
+                    })
+                    .on("mouseout", function() {
+                        tooltipPrediction.transition().duration(500).style("opacity", 0);
+                    });
+
+                // Get the unique years from the predictions
+                const years = Array.from(new Set(predictions.map(d => d.yearEnding))).sort();
+
+                // Get the minimum and maximum rates
+                const minRate = Math.floor(d3.min(predictions, d => d.value) * 8) / 8;
+                const maxRate = Math.ceil(d3.max(predictions, d => d.value) * 8) / 8;
+
+                // Generate rate steps from min to max in steps of 0.125
+                const rateSteps = [];
+                for (let rate = minRate; rate <= maxRate; rate += 0.125) {
+                    rateSteps.push(parseFloat(rate.toFixed(3)));
+                }
+
+                const rateYearData = {};
+                rateSteps.forEach(rate => {
+                    rateYearData[rate] = {};
+                    years.forEach(y => {
+                        rateYearData[rate][y] = 0;
+                    });
+                });
+
+                predictions.forEach(d => {
+                    const roundedRate = parseFloat((Math.round(d.value * 8) / 8).toFixed(3));
+                    rateYearData[roundedRate][d.yearEnding] += d.quantity;
+                });
+
+                const meanRates = {};
+                years.forEach(y => {
+                    const preds = predictions.filter(d => d.yearEnding === y);
+                    const totalQuantity = d3.sum(preds, d => d.quantity);
+                    const weightedSum = d3.sum(preds, d => d.value * d.quantity);
+                    const mean = weightedSum / totalQuantity;
+                    meanRates[y] = parseFloat(mean.toFixed(3));
+                });
+
+                let tableHTML = `<h3>Year: ${year}, Quarter: ${quarter}</h3>`;
+                tableHTML += '<table><thead><tr><th>Rate</th>';
+                years.forEach(y => {
+                    tableHTML += `<th>${y}</th>`;
+                });
+                tableHTML += '</tr></thead><tbody>';
+                tableHTML += '<tr><td>Mean</td>';
+                years.forEach(y => {
+                    tableHTML += `<td>${meanRates[y]}</td>`;
+                });
+                tableHTML += '</tr>';
+
+                rateSteps.forEach(rate => {
+                    tableHTML += `<tr><td>${rate.toFixed(3)}</td>`;
+                    years.forEach(y => {
+                        const quantity = rateYearData[rate][y] || 0;
+                        tableHTML += `<td>${quantity}</td>`;
+                    });
+                    tableHTML += '</tr>';
+                });
+                tableHTML += '</tbody></table>';
+
+                // Update the #info-box with the table
+                d3.select("#info-box").style("display", "block").html(tableHTML);
+            }
+
+            function resetGraph() {
+                linePath.style("opacity", 1);
+                svg.selectAll(".prediction-dot, .mean-line, .upper-line, .lower-line, .shaded-area").remove();
+                d3.select("#info-box").style("display", "none");
+            }
+
+            function handleLineClick(event) {
+                event.stopPropagation();
+                const [mouseX] = d3.pointer(event);
+                const dateClicked = x.invert(mouseX);
+                const year = dateClicked.getFullYear();
+                const month = dateClicked.getMonth() + 1;
+                const quarter = getQuarter(month);
+
+                linePath.style("opacity", 0.5);
+
+                const predictions = (predictionData.find(d => d.year === year && d.quarter === quarter) || {}).predictions;
+                if (predictions) {
+                    addPredictionPoints(predictions, year, quarter);
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
