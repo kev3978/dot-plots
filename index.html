@@ -3,41 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <title>Fed Interest Rate Plot with Predictions and Tooltips</title>
+    <!-- Updated D3.js to version 6 -->
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
+        /* Center the chart title */
+        #chart h2 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+        }
+
+        /* Tooltip styles */
         .tooltip, .tooltipMean, .tooltipPrediction, .tooltipUpper, .tooltipLower {
             position: absolute;
-            background-color: white;
-            padding: 5px;
-            border: 1px solid black;
-            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 8px;
+            border: 1px solid #333;
+            border-radius: 4px;
             pointer-events: none;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: #333;
         }
+
+        /* Prediction dots */
         .prediction-dot {
             fill: red;
             opacity: 0.7;
         }
+
+        /* Mean line */
         .mean-line {
             stroke: green;
             stroke-width: 2;
             fill: none;
         }
+
+        /* Upper and lower lines */
         .upper-line {
             stroke: blue;
             stroke-width: 2;
             fill: none;
             stroke-dasharray: 4;
         }
+
         .lower-line {
             stroke: orange;
             stroke-width: 2;
             fill: none;
             stroke-dasharray: 4;
         }
+
+        /* Shaded area */
         .shaded-area {
             fill: lightblue;
             opacity: 0.3;
             pointer-events: none; /* Prevent the shaded area from capturing mouse events */
+        }
+
+        /* Info box styling */
+        #info-box {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        #info-box h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #info-box table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0 auto;
+            max-width: 600px;
+            font-size: 14px;
+        }
+
+        #info-box th, #info-box td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #info-box th {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #info-box td {
+            text-align: center;
+        }
+
+        /* Zebra striping for table rows */
+        #info-box tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #info-box tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Mean rate row styling */
+        #info-box tr:last-child td {
+            font-weight: bold;
+            background-color: #e6ffe6;
         }
     </style>
 </head>
@@ -46,8 +116,10 @@
 <div id="info-box" class="info-box" style="display: none;"></div>
 
 <script>
-    d3.json('data/interest_rate_data.json').then(function(rateData) {
-        d3.json('data/prediction_data.json').then(function(predictionData) {
+    // Load the interest rate data
+    d3.json('interest_rate_data.json').then(function(rateData) {
+        // Load the prediction data
+        d3.json('prediction_data.json').then(function(predictionData) {
 
             // Parse date and rate from the data
             const parseDate = d3.timeParse("%Y-%m");
@@ -63,17 +135,15 @@
 
             // Set up the scales
             const x = d3.scaleTime()
-                .domain([d3.extent(rateData, d => d.date)[0], parseDate("2027-01")])
+                .domain([d3.extent(rateData, d => d.date)[0], parseDate("2028-01")])
                 .range([0, width]);
 
             const y = d3.scaleLinear()
                 .domain([0, 6])
                 .range([height, 0]);
 
-            // Append the chart title
-            d3.select("#chart").append("h2").text("Fed rate and its members' predictions");
+            d3.select("#chart").append("h2").text("Fed Rate and Members' Predictions");
 
-            // Append the SVG object to the #chart div
             const svg = d3.select("#chart")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
@@ -81,7 +151,6 @@
                 .append("g")
                 .attr("transform", `translate(${margin.left},${margin.top})`);
 
-            // Define the tooltip divs
             const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
             const tooltipMean = d3.select("body").append("div").attr("class", "tooltipMean").style("opacity", 0);
             const tooltipPrediction = d3.select("body").append("div").attr("class", "tooltipPrediction").style("opacity", 0);
@@ -96,6 +165,7 @@
                 .style("pointer-events", "all")
                 .on("click", resetGraph);
 
+            // Add the X Axis
             svg.append("g")
                 .attr("transform", `translate(0,${height})`)
                 .call(d3.axisBottom(x).ticks(d3.timeYear.every(1)))
@@ -103,13 +173,16 @@
                 .attr("transform", "rotate(45)")
                 .style("text-anchor", "start");
 
+            // Add the Y Axis
             svg.append("g").call(d3.axisLeft(y));
 
+            // Define the line
             const line = d3.line()
                 .x(d => x(d.date))
                 .y(d => y(d.rate))
                 .curve(d3.curveMonotoneX);
 
+            // Add the interest rate line path
             const linePath = svg.append("path")
                 .datum(rateData)
                 .attr("fill", "none")
@@ -134,18 +207,20 @@
                     );
 
                     tooltip.transition().duration(200).style("opacity", .9);
-                    tooltip.html(`Rate: ${closestData.rate}<br>Month: ${closestData.month}/${closestData.year}`)
-                        .style("left", `${event.pageX + 5}px`)
-                        .style("top", `${event.pageY - 28}px`);
+                    tooltip.html(`<strong>Rate:</strong> ${closestData.rate}<br><strong>Date:</strong> ${closestData.month}/${closestData.year}`)
+                        .style("left", `${event.pageX + 10}px`)
+                        .style("top", `${event.pageY - 25}px`);
                 })
                 .on("mouseout", function() {
                     tooltip.transition().duration(500).style("opacity", 0);
                 });
 
+            // Helper function to get the quarter from the month
             function getQuarter(month) {
                 return Math.ceil(month / 3);
             }
 
+            // Function to add prediction points and related elements
             function addPredictionPoints(predictions, year, quarter) {
                 // Remove existing prediction elements
                 svg.selectAll(".prediction-dot, .mean-line, .upper-line, .lower-line, .shaded-area").remove();
@@ -156,7 +231,7 @@
                 // Calculate the weighted mean points
                 const meanPoints = Array.from(nestedData, ([yearEnding, values]) => {
                     const weightedMean = d3.sum(values, d => d.value * d.quantity) / d3.sum(values, d => d.quantity);
-                    return { date: parseDate(`${yearEnding}-12`), value: weightedMean };
+                    return { date: parseDate(`${yearEnding}-12`), value: weightedMean, yearEnding };
                 });
 
                 // Calculate upper and lower points for the shaded area
@@ -181,11 +256,13 @@
                     return { date: d.date, upper: d.value, lower: lowerPoints[i].value };
                 });
 
+                // Add the shaded area first
                 svg.append("path")
                     .datum(shadedData)
                     .attr("class", "shaded-area")
                     .attr("d", area);
 
+                // Define and add the upper and lower lines
                 const upperLine = d3.line()
                     .x(d => x(d.date))
                     .y(d => y(d.value))
@@ -205,8 +282,8 @@
                         tooltipUpper.html("Upper predictions");
                     })
                     .on("mousemove", function(event) {
-                        tooltipUpper.style("left", `${event.pageX + 5}px`)
-                            .style("top", `${event.pageY - 28}px`);
+                        tooltipUpper.style("left", `${event.pageX + 10}px`)
+                            .style("top", `${event.pageY - 25}px`);
                     })
                     .on("mouseout", function() {
                         tooltipUpper.transition().duration(500).style("opacity", 0);
@@ -221,18 +298,20 @@
                         tooltipLower.html("Lower predictions");
                     })
                     .on("mousemove", function(event) {
-                        tooltipLower.style("left", `${event.pageX + 5}px`)
-                            .style("top", `${event.pageY - 28}px`);
+                        tooltipLower.style("left", `${event.pageX + 10}px`)
+                            .style("top", `${event.pageY - 25}px`);
                     })
                     .on("mouseout", function() {
                         tooltipLower.transition().duration(500).style("opacity", 0);
                     });
 
+                // Define the mean line
                 const meanLine = d3.line()
                     .x(d => x(d.date))
                     .y(d => y(d.value))
                     .curve(d3.curveMonotoneX);
 
+                // Add the mean line path
                 svg.append("path")
                     .datum(meanPoints)
                     .attr("class", "mean-line")
@@ -242,8 +321,8 @@
                         tooltipMean.html("Mean forecast");
                     })
                     .on("mousemove", function(event) {
-                        tooltipMean.style("left", `${event.pageX + 5}px`)
-                            .style("top", `${event.pageY - 28}px`);
+                        tooltipMean.style("left", `${event.pageX + 10}px`)
+                            .style("top", `${event.pageY - 25}px`);
                     })
                     .on("mouseout", function() {
                         tooltipMean.transition().duration(500).style("opacity", 0);
@@ -258,24 +337,21 @@
                     .attr("cy", d => y(d.value))
                     .on("mouseover", function(event, d) {
                         tooltipPrediction.transition().duration(200).style("opacity", .9);
-                        tooltipPrediction.html(`Quantity: ${d.quantity}<br>Rate: ${d.value}`);
+                        tooltipPrediction.html(`<strong>Quantity:</strong> ${d.quantity}<br><strong>Rate:</strong> ${d.value}`);
                     })
                     .on("mousemove", function(event) {
-                        tooltipPrediction.style("left", `${event.pageX + 5}px`)
-                            .style("top", `${event.pageY - 28}px`);
+                        tooltipPrediction.style("left", `${event.pageX + 10}px`)
+                            .style("top", `${event.pageY - 25}px`);
                     })
                     .on("mouseout", function() {
                         tooltipPrediction.transition().duration(500).style("opacity", 0);
                     });
 
-                // Get the unique years from the predictions
                 const years = Array.from(new Set(predictions.map(d => d.yearEnding))).sort();
 
-                // Get the minimum and maximum rates
                 const minRate = Math.floor(d3.min(predictions, d => d.value) * 8) / 8;
                 const maxRate = Math.ceil(d3.max(predictions, d => d.value) * 8) / 8;
 
-                // Generate rate steps from min to max in steps of 0.125
                 const rateSteps = [];
                 for (let rate = minRate; rate <= maxRate; rate += 0.125) {
                     rateSteps.push(parseFloat(rate.toFixed(3)));
@@ -309,11 +385,6 @@
                     tableHTML += `<th>${y}</th>`;
                 });
                 tableHTML += '</tr></thead><tbody>';
-                tableHTML += '<tr><td>Mean</td>';
-                years.forEach(y => {
-                    tableHTML += `<td>${meanRates[y]}</td>`;
-                });
-                tableHTML += '</tr>';
 
                 rateSteps.forEach(rate => {
                     tableHTML += `<tr><td>${rate.toFixed(3)}</td>`;
@@ -323,9 +394,16 @@
                     });
                     tableHTML += '</tr>';
                 });
+
+                // Add the final row for mean rates
+                tableHTML += '<tr><td>Mean Rate</td>';
+                years.forEach(y => {
+                    tableHTML += `<td>${meanRates[y]}</td>`;
+                });
+                tableHTML += '</tr>';
+
                 tableHTML += '</tbody></table>';
 
-                // Update the #info-box with the table
                 d3.select("#info-box").style("display", "block").html(tableHTML);
             }
 
