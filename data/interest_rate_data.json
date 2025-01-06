@@ -1076,5 +1076,19 @@
     "quarter": 4,
     "upper": 5.0,
     "midpoint": 4.875
+  },
+  {
+    "year": 2024,
+    "month": 11,
+    "quarter": 4,
+    "upper": 4.75,
+    "midpoint": 4.625
+  },
+  {
+    "year": 2024,
+    "month": 12,
+    "quarter": 4,
+    "upper": 4.5,
+    "midpoint": 4.375
   }
 ]
